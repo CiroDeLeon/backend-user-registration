@@ -85,8 +85,7 @@ Para registrar un nuevo usuario, enviar una petición POST a `http://localhost:8
     }
   ]
 }
-```json
-
+```
 Respuestas
 Éxito: Código de estado HTTP 200 OK y un cuerpo JSON con los datos del usuario, incluyendo id, created, modified, lastLogin, token, y isActive.
 Error: Código de estado HTTP adecuado y un cuerpo JSON con el mensaje de error.
