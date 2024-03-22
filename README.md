@@ -20,38 +20,48 @@ Para ejecutar este proyecto se necesita tener instalado:
 Sigue los siguientes pasos para instalar y ejecutar el proyecto:
 
 1. Clonar el repositorio:
+
 git clone https://github.com/CiroDeLeon/backend-user-registration.git
 
 
 2. Navegar al directorio del proyecto:
+
 cd user-registration
 
 
 3. Generar el jar con Maven con el siguiente comando:
+
 mvn clean install
 
 4. ingresas a la carpeta target con el siguiente comando:
+
 cd target
 
 5. ejecutas el jar
+
 java -jar app.jar
 
 ## Instalación y ejecucion usando docker
 
 1. Clonar el repositorio:
+
 git clone https://github.com/CiroDeLeon/backend-user-registration.git
 
 
 2. Navegar al directorio del proyecto:
+
 cd user-registration
 
 3. Creamos la imagen
+
 docker build -t  user-registration-img .
 
 4. Creamos un contenedor
+
 docker run -p 8080:8080 user-registration-img
 
 5. si deseas crear otro contenedor que corra sobre otro puerto,en este caso en el 8081 el comando seria:
+
 docker run -p 8081:8080 user-registration-img
 
 
