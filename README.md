@@ -16,7 +16,7 @@ Para ejecutar este proyecto se necesita tener instalado:
 - JDK 17 o superior
 - Maven
 
-## Diagrama 
+## Diagrama UML 
 
 ![Ejemplo de Imagen](DiagramaDeApp.png "Este es un ejemplo de imagen")
 
