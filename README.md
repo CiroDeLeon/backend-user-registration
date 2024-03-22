@@ -79,11 +79,20 @@ puedes acceder a la documentacion swagger `http://localhost:8080/swagger-ui/inde
 
 puedes acceder a la h2-console `http://localhost:8080/h2-console`
 
-JDBC URL=jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+JDBC URL
+```
+jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+```
 
-User Name=sa
+User Name
+```
+sa
+```
 
-password=123456
+password
+```
+123456
+```
 
 ## Uso de la API
 Para registrar un nuevo usuario, enviar una petición POST a `http://localhost:8080/users/register` con el siguiente cuerpo JSON:
