@@ -56,6 +56,9 @@ git clone https://github.com/CiroDeLeon/backend-user-registration.git
 
 2. Navegar al directorio del proyecto:
 ```
+cd backend-user-registration
+```
+```
 cd user-registration
 ```
 
