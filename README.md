@@ -60,9 +60,13 @@ Una vez iniciada, la aplicación estará disponible en `http://localhost:8080`.
 
 puedes acceder a la documentacion swagger `http://localhost:8080/swagger-ui/index.html`
 
+
 puedes acceder a la h2-console `http://localhost:8080/h2-console`
+
 JDBC URL=jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
-User Namse=sa
+
+User Name=sa
+
 password=123456
 
 ## Uso de la API
