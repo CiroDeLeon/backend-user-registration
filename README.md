@@ -16,6 +16,11 @@ Para ejecutar este proyecto se necesita tener instalado:
 - JDK 17 o superior
 - Maven
 
+## Diagrama 
+
+![Ejemplo de Imagen](DiagramaDeApp.png "Este es un ejemplo de imagen")
+
+
 ## Instalación y Ejecución sin docker
 Sigue los siguientes pasos para instalar y ejecutar el proyecto:
 
