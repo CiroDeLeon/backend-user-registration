@@ -14,7 +14,7 @@ Este proyecto es una aplicación Spring Boot que expone una API RESTful para el 
 ## Requisitos
 Para ejecutar este proyecto se necesita tener instalado:
 - JDK 17 o superior
-- Maven o Docker
+- Maven Versión 3.8.7 o Docker Version 20.10.21
 
 ## Instalación y Ejecución sin docker
 Sigue los siguientes pasos para instalar y ejecutar el proyecto:
