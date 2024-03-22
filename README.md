@@ -16,11 +16,6 @@ Para ejecutar este proyecto se necesita tener instalado:
 - JDK 17 o superior
 - Maven
 
-## Diagrama UML 
-
-![Ejemplo de Imagen](DiagramaDeApp.png "Este es un ejemplo de imagen")
-
-
 ## Instalación y Ejecución sin docker
 Sigue los siguientes pasos para instalar y ejecutar el proyecto:
 
@@ -128,3 +123,7 @@ Error: Código de estado HTTP adecuado y un cuerpo JSON con el mensaje de error.
 
 Configuración
 La configuración de la aplicación se puede ajustar en el archivo src/main/resources/application.properties. Esto incluye la conexión a la base de datos, la configuración de JPA y la expresión regular para la validación de la contraseña.
+
+## Diagrama UML 
+
+![Ejemplo de Imagen](DiagramaDeApp.png "Este es un ejemplo de imagen")
