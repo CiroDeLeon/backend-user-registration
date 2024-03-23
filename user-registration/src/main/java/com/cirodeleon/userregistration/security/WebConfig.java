@@ -17,7 +17,7 @@ import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 
-import com.cirodeleon.userregistration.utils.JwtUtil;
+
 
 
 
@@ -50,11 +50,19 @@ public class WebConfig {
         return connector;
     }
 	
+	@SuppressWarnings("removal")
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+		
 		http
-		.headers(headers -> headers.frameOptions().sameOrigin())
-		.requiresChannel(channel -> channel.anyRequest().requiresSecure())
+		.headers(headers -> headers
+				.frameOptions().sameOrigin()	            
+	        )
+		.requiresChannel(channel -> channel
+	            //.requestMatchers(r -> r.getRequestURI().startsWith("/h2-console")).requiresInsecure() // Permite HTTP para H2 console
+	            .anyRequest().requiresSecure()
+	        )
+		
 	    .cors(cors -> cors.configurationSource(request -> {
 	        CorsConfiguration config = new CorsConfiguration();
 	        config.setAllowedOrigins(List.of("*")); // Permitir cualquier origen
@@ -63,14 +71,17 @@ public class WebConfig {
 	        config.setAllowCredentials(true);
 	        return config;
 	    }))
-	    .csrf(csrf -> csrf.disable())
+	    .csrf(csrf -> csrf
+	            .ignoringRequestMatchers("/h2-console/**") // Ignora CSRF para H2 Console
+	            .disable())
 	          // Añade DiscriminanteFilter al principio de la cadena
 	         .exceptionHandling(exception -> exception.authenticationEntryPoint(this.unauthorizedEntryPoint()))
 	         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 	         .authorizeHttpRequests(auth -> auth.requestMatchers("/users/register","/users/login").permitAll()
-	                                             .requestMatchers("/h2-console/**","/swagger-ui/**","/v3/api-docs/swagger-config","/v3/api-docs**","/v2/api-docs**","/swagger**","/user").permitAll()
+	                                             .requestMatchers("/h2-console/**","/favicon.ico/**","/static/**","/swagger-ui/**","/v3/api-docs/swagger-config","/v3/api-docs**","/v2/api-docs**","/swagger**","/user").permitAll()
 	                                             .anyRequest().authenticated())
 	         .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);;
 		return http.build();
+
 	}
 }

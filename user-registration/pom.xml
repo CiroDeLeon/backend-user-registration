@@ -133,9 +133,7 @@
         <dependencies>
             <dependency>
                 <groupId>com.h2database</groupId>
-                <artifactId>h2</artifactId>
-                <version>1.4.200</version> <!-- Asegúrate de usar la última versión -->
-                <scope>runtime</scope>
+                <artifactId>h2</artifactId>                
             </dependency>
         </dependencies>
         <activation>
