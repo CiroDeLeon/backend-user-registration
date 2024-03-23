@@ -2,6 +2,7 @@
 
 ## Descripción
 Este proyecto es una aplicación Spring Boot que expone una API RESTful para el registro de usuarios. Implementa validaciones para el correo electrónico y la contraseña, autenticación con tokens JWT y utiliza una base de datos H2 en memoria para la persistencia de datos. El objetivo principal es permitir el registro de usuarios junto con sus números de teléfono en un formato específico.
+Ademas se realizó el soporte de https usando un certificado autofirmado. 
 
 ## Tecnologías Utilizadas
 - Java 17
@@ -78,12 +79,20 @@ docker run -p 8081:8443 user-registration-img
 ```
 
 
-Una vez iniciada, la aplicación estará disponible en `http://localhost:8080`.
+Una vez iniciada, la aplicación estará disponible en 
+```
+`http://localhost:8080`.
+```
 
-puedes acceder a la documentacion swagger `http://localhost:8080/swagger-ui/index.html`
+puedes acceder a la documentacion swagger
+```
+ `http://localhost:8080/swagger-ui/index.html`
+```
 
-
-puedes acceder a la h2-console `http://localhost:8080/h2-console`
+puedes acceder a la h2-console 
+```
+`http://localhost:8080/h2-console`
+```
 
 JDBC URL
 ```
