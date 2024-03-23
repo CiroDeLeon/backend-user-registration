@@ -30,6 +30,7 @@ public class WebConfig {
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http
+		.headers(headers -> headers.frameOptions().sameOrigin())
 	    .cors(cors -> cors.configurationSource(request -> {
 	        CorsConfiguration config = new CorsConfiguration();
 	        config.setAllowedOrigins(List.of("*")); // Permitir cualquier origen
