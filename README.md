@@ -2,7 +2,7 @@
 
 ## Descripción
 Este proyecto es una aplicación Spring Boot que expone una API RESTful para el registro de usuarios. Implementa validaciones para el correo electrónico y la contraseña, autenticación con tokens JWT y utiliza una base de datos H2 en memoria para la persistencia de datos. El objetivo principal es permitir el registro de usuarios junto con sus números de teléfono en un formato específico.
-Ademas se realizó el soporte de https usando un certificado autofirmado. 
+Ademas se realizó el soporte de https usando un certificado autofirmado y todas las peticiones http se redirigen a https. 
 
 ## Tecnologías Utilizadas
 - Java 17
