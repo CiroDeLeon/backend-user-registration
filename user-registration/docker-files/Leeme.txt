@@ -1,11 +1,28 @@
 INSTALACION AMBIENTE PRODUCTIVO
 
-Para Instalar en ambiente productivo solo debes reemplazar el Dockerfile de produccion
+Para Instalar en ambiente productivo:
+
+1) Reemplazar el Dockerfile de produccion
 por el de la raiz del proyecto.
 
-y en el applications.properties ajustar la propiedad:
+2) en el applications.properties ajustar la propiedad:
 
 spring.profiles.active=prod
+
+3) verificar que el archivo script.sh de la raiz del proyecto java use el end of line sequence LF.
+
+4) crear la imagen usando el comando:
+
+docker build -t  user-registration-img-prod .
+
+5)crear el contenedor usando el comando:
+
+docker run -p 8081:8443 user-registration-img-prod
+
+6) accedemos a swagger
+
+https://localhost:8080/swagger-ui/index.html
+
 
 
 INSTALACION AMBIENTE DESARROLLO
