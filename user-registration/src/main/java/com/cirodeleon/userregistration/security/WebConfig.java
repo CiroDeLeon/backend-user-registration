@@ -43,7 +43,7 @@ public class WebConfig {
 	         .exceptionHandling(exception -> exception.authenticationEntryPoint(this.unauthorizedEntryPoint()))
 	         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 	         .authorizeHttpRequests(auth -> auth.requestMatchers("/users/register","/users/login").permitAll()
-	                                             .requestMatchers(/*"/swagger-ui/index.html",*/"/swagger-ui/**","/v3/api-docs/swagger-config","/v3/api-docs**","/v2/api-docs**","/swagger**","/user").permitAll()
+	                                             .requestMatchers("/h2-console/**","/swagger-ui/**","/v3/api-docs/swagger-config","/v3/api-docs**","/v2/api-docs**","/swagger**","/user").permitAll()
 	                                             .anyRequest().authenticated())
 	         .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);;
 		return http.build();
