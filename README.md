@@ -81,17 +81,17 @@ docker run -p 8081:8443 user-registration-img
 
 Una vez iniciada, la aplicación estará disponible en 
 ```
-`http://localhost:8080`.
+http://localhost:8080
 ```
 
 puedes acceder a la documentacion swagger
 ```
- `http://localhost:8080/swagger-ui/index.html`
+http://localhost:8080/swagger-ui/index.html
 ```
 
 puedes acceder a la h2-console 
 ```
-`http://localhost:8080/h2-console`
+http://localhost:8080/h2-console
 ```
 
 JDBC URL
