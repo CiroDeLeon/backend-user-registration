@@ -17,7 +17,7 @@ Para ejecutar este proyecto se necesita tener instalado:
 - JDK 17 o superior
 - Maven Versión 3.8.7 o Docker Version 20.10.21
 
-## Instalación y Ejecución sin docker
+## Instalación y Ejecución MAVEN
 Sigue los siguientes pasos para instalar y ejecutar el proyecto:
 
 1. Clonar el repositorio:
@@ -48,7 +48,7 @@ cd target
 java -jar app.jar
 ```
 
-## Instalación y ejecucion usando docker
+## Instalación y Ejecución DOCKER
 
 1. Clonar el repositorio:
 ```
