@@ -128,6 +128,20 @@ Respuestas
 Éxito: Código de estado HTTP 200 OK y un cuerpo JSON con los datos del usuario, incluyendo id, created, modified, lastLogin, token, y isActive.
 Error: Código de estado HTTP adecuado y un cuerpo JSON con el mensaje de error.
 
+Para hacer login se debe enviar una petición POST a `http://localhost:8080/users/login` con el siguiente JSON:
+
+```json
+{
+  "email": "juan@dominio.cl",
+  "password": "10784054P@ta"
+}
+```
+
+Para listar todos los usuarios se debe enviar una petición GET a `http://localhost:8080/users/all` anexando un header con la siguiente estructura porque este endpoint esta asegurado:
+
+Authorization=Bearer TokenValue
+
+
 Configuración
 La configuración de la aplicación se puede ajustar en el archivo src/main/resources/application.properties. Esto incluye la conexión a la base de datos, la configuración de JPA y la expresión regular para la validación de la contraseña.
 
