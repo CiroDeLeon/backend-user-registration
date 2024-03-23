@@ -165,15 +165,21 @@ spring.profiles.active=prod
 
 2) Instalar Postgres
 
-3) Correr el script de creación de tablas de postgres de la carpeta sql-scripts
+3) Crear la base de datos con nombre : proddb
 
-4) ingresar a la raiz del proyecto y correr comando 
+4) Correr el script de creación de tablas de postgres de la carpeta sql-scripts/create-script-postgres.sql
+
+```
+psql -h localhost -d proddb -U postgres -f .\sql-scripts\create-script-postgres.sql
+```
+
+5) ingresar a la raiz del proyecto y correr comando 
 
 ```
 mvn clean install -Pprod
 ```
 
-5) correr comandos
+6) correr comandos
 
 ```
 cd target
