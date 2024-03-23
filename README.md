@@ -17,6 +17,36 @@ Para ejecutar este proyecto se necesita tener instalado:
 - JDK 17 o superior
 - Maven Versión 3.8.7 o Docker Version 20.10.21
 
+## Instalación y Ejecución usando DOCKER (RECOMENDADO)
+
+1. Clonar el repositorio:
+```
+git clone https://github.com/CiroDeLeon/backend-user-registration.git
+```
+
+2. Navegar al directorio del proyecto:
+```
+cd backend-user-registration
+```
+```
+cd user-registration
+```
+
+3. Creamos la imagen
+```
+docker build -t  user-registration-img .
+```
+
+4. Creamos un contenedor
+```
+docker run -p 8080:8443 user-registration-img
+```
+
+5. si deseas crear otro contenedor que corra sobre otro puerto,en este caso en el 8081 el comando seria:
+```
+docker run -p 8081:8443 user-registration-img
+```
+
 ## Instalación y Ejecución usando MAVEN
 Sigue los siguientes pasos para instalar y ejecutar el proyecto:
 
@@ -48,35 +78,7 @@ cd target
 java -jar app.jar
 ```
 
-## Instalación y Ejecución usando DOCKER
 
-1. Clonar el repositorio:
-```
-git clone https://github.com/CiroDeLeon/backend-user-registration.git
-```
-
-2. Navegar al directorio del proyecto:
-```
-cd backend-user-registration
-```
-```
-cd user-registration
-```
-
-3. Creamos la imagen
-```
-docker build -t  user-registration-img .
-```
-
-4. Creamos un contenedor
-```
-docker run -p 8080:8443 user-registration-img
-```
-
-5. si deseas crear otro contenedor que corra sobre otro puerto,en este caso en el 8081 el comando seria:
-```
-docker run -p 8081:8443 user-registration-img
-```
 
 
 Una vez iniciada, la aplicación estará disponible en 
