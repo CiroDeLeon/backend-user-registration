@@ -24,7 +24,7 @@ public class UserDto {
 
     @NotBlank(message = "El correo no puede estar vacío.")
     @Email(message = "Formato de correo inválido.")
-    @Pattern(regexp = "^[\\w-\\.]+@dominio\\.cl$", message = "El correo debe ser un correo válido con dominio @dominio.cl")
+    @Pattern(regexp = "^[\\w-\\.]+@[\\w-]+\\.cl$", message = "El correo debe ser un correo válido con dominio .cl")
     private String email;
 
     //@NotBlank(message = "La contraseña no puede estar vacía.")
