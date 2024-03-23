@@ -2,7 +2,10 @@ package com.cirodeleon.userregistration.security;
 
 import java.util.List;
 
+import org.apache.catalina.connector.Connector;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
+import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
@@ -28,9 +31,26 @@ public class WebConfig {
 	}
 	
 	@Bean
+    public ServletWebServerFactory servletContainer() {
+        TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory();
+        tomcat.addAdditionalTomcatConnectors(redirectConnector());
+        return tomcat;
+    }
+
+    private Connector redirectConnector() {
+        Connector connector = new Connector(TomcatServletWebServerFactory.DEFAULT_PROTOCOL);
+        connector.setScheme("http");
+        connector.setPort(8080);
+        connector.setSecure(false);
+        connector.setRedirectPort(8443);
+        return connector;
+    }
+	
+	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http
 		.headers(headers -> headers.frameOptions().sameOrigin())
+		.requiresChannel(channel -> channel.anyRequest().requiresSecure())
 	    .cors(cors -> cors.configurationSource(request -> {
 	        CorsConfiguration config = new CorsConfiguration();
 	        config.setAllowedOrigins(List.of("*")); // Permitir cualquier origen
