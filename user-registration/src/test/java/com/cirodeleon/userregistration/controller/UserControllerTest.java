@@ -6,15 +6,22 @@ import com.cirodeleon.userregistration.dto.PhoneDto;
 import com.cirodeleon.userregistration.dto.UserDto;
 import com.cirodeleon.userregistration.entity.User;
 import com.cirodeleon.userregistration.exception.EmailAlreadyRegisteredException;
+import com.cirodeleon.userregistration.security.JwtRequestFilter;
 import com.cirodeleon.userregistration.service.UserService;
+import com.cirodeleon.userregistration.utils.JwtUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.MediaType;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.context.annotation.FilterType;
+
 
 import java.util.HashSet;
 import java.util.Set;
@@ -24,7 +31,10 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(UserController.class)
+@WebMvcTest(value = UserController.class, excludeFilters = {
+	    @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = JwtRequestFilter.class)
+	})
+@AutoConfigureMockMvc(addFilters = false)
 public class UserControllerTest {
 
     @Autowired
@@ -32,6 +42,13 @@ public class UserControllerTest {
 
     @MockBean
     private UserService userService;
+    
+    @MockBean
+    private JwtUtil jwtUtil;
+    
+    @MockBean
+    private SecurityFilterChain securityFilterChain;
+
 
     private UserDto userDto;
     private User user;

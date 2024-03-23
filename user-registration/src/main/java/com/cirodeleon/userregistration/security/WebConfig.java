@@ -17,6 +17,8 @@ import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 
+import com.cirodeleon.userregistration.utils.JwtUtil;
+
 
 
 @Configuration
@@ -24,6 +26,8 @@ public class WebConfig {
 	
 	@Autowired
     JwtRequestFilter jwtRequestFilter;
+	
+	
 	
 	@Bean
 	public AuthenticationEntryPoint unauthorizedEntryPoint() {
