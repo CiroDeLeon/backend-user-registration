@@ -148,3 +148,43 @@ La configuración de la aplicación se puede ajustar en el archivo src/main/reso
 ## Diagrama UML 
 
 ![Ejemplo de Imagen](DiagramaDeApp.png "Este es un ejemplo de imagen")
+
+## Instalacion Ambiente Productivo
+
+Usando Docker (RECOMENDADO):
+
+Las instrucciones estan en el leeme.txt de la carpeta docker-files
+
+Usando maven
+
+1) Ajustar el  applications.properties ajustar la propiedad:
+
+```
+spring.profiles.active=prod
+```
+
+2) Instalar Postgres
+
+3) Correr el script de creación de tablas de postgres de la carpeta sql-scripts
+
+4) ingresar a la raiz del proyecto y correr comando 
+
+```
+mvn clean install -Pprod
+```
+
+5) correr comandos
+
+```
+cd target
+```
+
+```
+java -jar app.jar
+```
+
+
+
+
+
+

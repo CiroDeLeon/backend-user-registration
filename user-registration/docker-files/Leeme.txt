@@ -1,0 +1,22 @@
+INSTALACION AMBIENTE PRODUCTIVO
+
+Para Instalar en ambiente productivo solo debes reemplazar el Dockerfile de produccion
+por el de la raiz del proyecto.
+
+y en el applications.properties ajustar la propiedad:
+
+spring.profiles.active=prod
+
+
+INSTALACION AMBIENTE DESARROLLO
+
+Para Instalar en ambiente de desarrollo solo debes reemplazar el Dockerfile de dev
+por el de la raiz del proyecto.
+
+y en el applications.properties ajustar la propiedad:
+
+spring.profiles.active=dev
+
+
+
+

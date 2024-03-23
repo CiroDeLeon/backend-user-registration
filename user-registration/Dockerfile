@@ -1,6 +1,14 @@
-# Etapa de construcción para compilar la aplicación
-FROM maven:3.6.3-openjdk-17-slim AS build
+# Usar la imagen base de OpenJDK con la versión 17
+FROM openjdk:17-slim as build
 
+# Información del mantenedor (opcional)
+LABEL maintainer="elalumnopc@hotmail.com"
+
+# Instalar Maven
+RUN apt-get update && \
+    apt-get install -y maven
+
+# Crear el directorio de la aplicación
 WORKDIR /app
 
 # Copiar el archivo pom.xml y descargar las dependencias
@@ -11,33 +19,15 @@ RUN mvn dependency:go-offline
 COPY src src
 
 # Empaquetar la aplicación sin ejecutar los tests
-RUN mvn clean install -DskipTests -Pprod
+RUN mvn clean install -DskipTests
 
-# Etapa de ejecución para correr la aplicación
+# Establecer la imagen base con JRE para ejecución
 FROM openjdk:17-slim
-
-# Información del mantenedor (opcional)
-LABEL maintainer="elalumnopc@hotmail.com"
 
 # Copiar el jar de la etapa de construcción a la etapa de ejecución
 COPY --from=build /app/target/app.jar app.jar
 
-# Instalar Postgres
-RUN apt-get update && \
-    apt-get install -y postgresql postgresql-contrib && \
-    rm -rf /var/lib/apt/lists/* 
-
-# Copiar el script de inicio personalizado
-COPY start.sh /usr/local/bin/start.sh
-RUN chmod +x /usr/local/bin/start.sh
-
-# Copiar los scripts SQL
-COPY sql-scripts/create-script-postgres.sql /docker-entrypoint-initdb.d/
-
-# Ejecutar el script de inicio personalizado que arrancará PostgreSQL y luego la aplicación
-ENTRYPOINT ["/usr/local/bin/start.sh"]
-
-
-
+# Ejecutar la aplicación
+ENTRYPOINT ["java","-jar","/app.jar"]
 
 
