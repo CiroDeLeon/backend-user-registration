@@ -69,12 +69,12 @@ docker build -t  user-registration-img .
 
 4. Creamos un contenedor
 ```
-docker run -p 8080:8080 user-registration-img
+docker run -p 8080:8443 user-registration-img
 ```
 
 5. si deseas crear otro contenedor que corra sobre otro puerto,en este caso en el 8081 el comando seria:
 ```
-docker run -p 8081:8080 user-registration-img
+docker run -p 8081:8443 user-registration-img
 ```
 
 
