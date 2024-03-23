@@ -6,6 +6,7 @@ import com.cirodeleon.userregistration.dto.UserResponseDto;
 import com.cirodeleon.userregistration.entity.Phone;
 import com.cirodeleon.userregistration.entity.User;
 import com.cirodeleon.userregistration.exception.EmailAlreadyRegisteredException;
+import com.cirodeleon.userregistration.exception.InvalidLoginException;
 import com.cirodeleon.userregistration.repository.UserRepository;
 import com.cirodeleon.userregistration.utils.JwtUtil;
 import com.cirodeleon.userregistration.utils.PasswordUtil;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -41,6 +43,25 @@ public class UserService {
         user.setToken(jwtUtil.generateToken(user));
         user.setPassword(passwordUtil.hashPassword(user.getPassword()));
         return userRepository.save(user);
+    }
+    
+    public User login(String email, String password) throws InvalidLoginException {
+        User user = userRepository.findByEmail(email)
+                                  .orElseThrow(() -> new InvalidLoginException("Usuario o contraseña incorrectos"));
+
+        if (!passwordUtil.verifyPassword(password, user.getPassword())) {
+            throw new InvalidLoginException("Usuario o contraseña incorrectos");
+        }
+        user.setLastLogin(new Date());
+        user.setToken(jwtUtil.generateToken(user));
+        
+        User response=this.userRepository.saveAndFlush(user);
+        return response;
+    }
+    
+    public List<UserDto> getAllUsers() {
+        List<User> users = userRepository.findAll();
+        return users.stream().map(this::convertToUserDto).collect(Collectors.toList());
     }
     
     public User convertToEntity(UserDto userDto) {
@@ -76,4 +97,25 @@ public class UserService {
         dto.setActive(user.isActive());
         return dto;
     }
+    
+ // En UserService
+
+    public UserDto convertToUserDto(User user) {
+        UserDto userDto = new UserDto();
+        userDto.setName(user.getName());
+        userDto.setEmail(user.getEmail());
+        userDto.setPassword(null);
+        Set<PhoneDto> phoneDtos = user.getPhones().stream().map(phone -> {
+            PhoneDto phoneDto = new PhoneDto();
+            phoneDto.setNumber(phone.getNumber());
+            phoneDto.setCitycode(phone.getCitycode());
+            phoneDto.setCountrycode(phone.getCountrycode());
+            // Asegúrate de no incluir información sensible o innecesaria
+            return phoneDto;
+        }).collect(Collectors.toSet());
+        userDto.setPhones(phoneDtos);
+        return userDto;
+    }
+
+
 }

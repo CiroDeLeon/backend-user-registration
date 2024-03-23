@@ -5,6 +5,7 @@ import java.util.Set;
 
 import com.cirodeleon.userregistration.entity.User;
 import com.cirodeleon.userregistration.validation.ValidPassword;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
@@ -28,6 +29,7 @@ public class UserDto {
 
     //@NotBlank(message = "La contraseña no puede estar vacía.")
     @ValidPassword
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String password;
     
     @Valid
