@@ -10,6 +10,7 @@ por el de la raiz del proyecto.
 spring.profiles.active=prod
 
 3) verificar que el archivo script.sh de la raiz del proyecto java use el end of line sequence LF.
+(esto sucede mas que todo en windows,se soluciona abriendo el archivo script.sh con visual studio code en la parte inferior debe salir una casilla CLRF la cambias a LF y guardas el archivo)
 
 4) crear la imagen usando el comando:
 
