@@ -80,16 +80,16 @@ docker run -p 8081:8443 user-registration-img
 
 
 Una vez iniciada, la aplicación estará disponible en 
-`http://localhost:8080`
+`https://localhost:8080`
 
 puedes acceder a la documentacion swagger
 ```
-http://localhost:8080/swagger-ui/index.html
+https://localhost:8080/swagger-ui/index.html
 ```
 
 puedes acceder a la h2-console 
 ```
-http://localhost:8080/h2-console
+https://localhost:8080/h2-console
 ```
 ## credenciales h2-console
 JDBC URL
@@ -108,7 +108,7 @@ password
 ```
 
 ## Uso de la API
-Para registrar un nuevo usuario, enviar una petición POST a `http://localhost:8080/users/register` con el siguiente cuerpo JSON:
+Para registrar un nuevo usuario, enviar una petición POST a `https://localhost:8080/users/register` con el siguiente cuerpo JSON:
 
 ```json
 {
@@ -128,7 +128,7 @@ Respuestas
 Éxito: Código de estado HTTP 200 OK y un cuerpo JSON con los datos del usuario, incluyendo id, created, modified, lastLogin, token, y isActive.
 Error: Código de estado HTTP adecuado y un cuerpo JSON con el mensaje de error.
 
-Para hacer login se debe enviar una petición POST a `http://localhost:8080/users/login` con el siguiente JSON:
+Para hacer login se debe enviar una petición POST a `https://localhost:8080/users/login` con el siguiente JSON:
 
 ```json
 {
@@ -137,7 +137,7 @@ Para hacer login se debe enviar una petición POST a `http://localhost:8080/user
 }
 ```
 
-Para listar todos los usuarios se debe enviar una petición GET a `http://localhost:8080/users/all` anexando un header con la siguiente estructura porque este endpoint esta asegurado:
+Para listar todos los usuarios se debe enviar una petición GET a `https://localhost:8080/users/all` anexando un header con la siguiente estructura porque este endpoint esta asegurado:
 
 Authorization=Bearer TokenValue
 
