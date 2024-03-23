@@ -22,7 +22,7 @@ docker run -p 8081:8443 user-registration-img-prod
 
 6) accedemos a swagger
 
-https://localhost:8080/swagger-ui/index.html
+https://localhost:8081/swagger-ui/index.html
 
 
 
