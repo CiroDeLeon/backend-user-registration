@@ -151,6 +151,8 @@ La configuración de la aplicación se puede ajustar en el archivo src/main/reso
 
 ## Instalacion Ambiente Productivo
 
+primero instalar en ambiente de desarrollo.
+
 Usando Docker (RECOMENDADO):
 
 Las instrucciones estan en el leeme.txt de la carpeta docker-files
@@ -169,8 +171,16 @@ spring.profiles.active=prod
 
 4) Correr el script de creación de tablas de postgres de la carpeta sql-scripts/create-script-postgres.sql
 
+En WINDOWS
+
 ```
 psql -h localhost -d proddb -U postgres -f .\sql-scripts\create-script-postgres.sql
+```
+
+En LINUX
+
+```
+psql -h localhost -d proddb -U postgres -f ./sql-scripts/create-script-postgres.sql
 ```
 
 5) ingresar a la raiz del proyecto y correr comando 
