@@ -80,9 +80,7 @@ docker run -p 8081:8443 user-registration-img
 
 
 Una vez iniciada, la aplicación estará disponible en 
-```
-http://localhost:8080
-```
+`http://localhost:8080`
 
 puedes acceder a la documentacion swagger
 ```
@@ -93,7 +91,7 @@ puedes acceder a la h2-console
 ```
 http://localhost:8080/h2-console
 ```
-
+## credenciales h2-console
 JDBC URL
 ```
 jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
