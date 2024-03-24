@@ -18,7 +18,8 @@ docker build -t  user-registration-img-prod .
 
 5)crear el contenedor usando el comando:
 
-docker run -p 8081:8443 user-registration-img-prod
+docker run -p 8081:8443 -v nombre_de_tu_volumen:/var/lib/postgresql/data user-registration-img-prod
+
 
 6) accedemos a swagger
 
